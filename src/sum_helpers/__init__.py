@@ -82,4 +82,4 @@ __all__ = [
     "four_sum_ii",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"

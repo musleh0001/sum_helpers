@@ -1,6 +1,6 @@
 [project]
 name = "sum-helpers"
-version = "0.1.0"
+version = "0.1.1"
 description = "Modular, typed Python utilities for two-sum, three-sum, triangle-sum, and generalized k-sum algorithms."
 readme = "README.md"
 license = "MIT"

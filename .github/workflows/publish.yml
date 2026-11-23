@@ -55,11 +55,14 @@ jobs:
           version: "latest"
 
       - name: Build distributions
-        run: uv build
+        run: |
+          uv build
+          rm -f dist/.gitignore
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          skip-existing: true
           # Works seamlessly with Trusted Publishing (OIDC) when configured on PyPI,
           # or falls back to an API token stored in repository secrets.
           password: ${{ secrets.PYPI_API_TOKEN }}
