@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          version: "latest"
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync --all-groups
+
+      - name: Run unit tests
+        run: uv run --python ${{ matrix.python-version }} pytest -v
+
+      - name: Run doctests
+        run: uv run --python ${{ matrix.python-version }} pytest --doctest-modules src/
+
+      - name: Run type checking (mypy)
+        run: uv run --python ${{ matrix.python-version }} --with mypy mypy src/ tests/
+
+      - name: Verify build artifacts
+        run: uv build

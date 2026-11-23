@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+pypi_token.txt
+test_pypi_token.txt
