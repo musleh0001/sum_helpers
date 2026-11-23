@@ -1,0 +1,40 @@
+[project]
+name = "sum-helpers"
+version = "0.1.0"
+description = "Modular, typed Python utilities for two-sum, three-sum, triangle-sum, and generalized k-sum algorithms."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "musleh-khan", email = "MuslehUddin.khan@exos.systems" }
+]
+requires-python = ">=3.10"
+keywords = [
+    "algorithms",
+    "two-sum",
+    "three-sum",
+    "k-sum",
+    "two-pointer",
+    "combinatorics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "mypy>=1.15.0",
+]
